@@ -8,7 +8,7 @@
 	<title>Unipê NewsFeed</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </h:head>
-<body>
+<h:body>
 
 	<div id="wrapper">
 		<div id="header">
@@ -22,12 +22,11 @@
 			<div id="content">
 				<div class="box">
 					<p>
-						<p:dialog header="Login" visible="true" closable="false"
-							draggable="false" resizable="false" width="420">
-							<center> <h:outputText
-								value="Usuário ou senha incorretos!" rendered="#{param.erro}"
-								style="color: darkred" /> </center>
-							<form action="j_spring_security_check" method="post">
+						<form action="j_spring_security_check" method="post">
+							<p:panel header="Login" width="420">
+								<center> <h:outputText
+									value="Usuário ou senha incorretos!" rendered="#{param.erro}"
+									style="color: darkred" /> </center>
 								<h:panelGrid columns="2" cellpadding="5">
 									<h:outputLabel for="j_username" value="Email: *" />
 									<h:inputText id="j_username" required="true" />
@@ -35,8 +34,8 @@
 									<h:inputSecret id="j_password" required="true" />
 									<h:commandButton value="Login" />
 								</h:panelGrid>
-							</form>
-						</p:dialog>
+							</p:panel>
+						</form>
 					</p>
 				</div>
 
@@ -44,5 +43,5 @@
 			</div>
 		</div>
 	</div>
-</body>
+</h:body>
 </html>
