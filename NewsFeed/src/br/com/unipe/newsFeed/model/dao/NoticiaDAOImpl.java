@@ -52,4 +52,10 @@ public class NoticiaDAOImpl implements NoticiaDAO {
 		return result;
 	}
 
+	@Override
+	public List<Noticia> listBySize(Integer tamanho) {
+		return sessionFactory.getCurrentSession()
+				.createCriteria(Noticia.class).setFirstResult(tamanho).setMaxResults(10).list();
+	}
+
 }

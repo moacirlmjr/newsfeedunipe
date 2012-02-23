@@ -23,9 +23,12 @@
 	
 	<sec:http auto-config="true" use-expressions="true">
 		<sec:access-denied-handler error-page="/paginas/erro/semPermissao.jsf" />
+		
 		<sec:intercept-url pattern="/index.jsf" access="hasRole('ROLE_ADMIN')" />
-		<sec:intercept-url pattern="/paginas/config/*"
-			access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/paginas/categoria/*" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/paginas/noticia/*" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/paginas/usuario/*" access="hasRole('ROLE_ADMIN')" />
+		
 		<sec:form-login login-page="/login.jsf"
 			authentication-failure-url="/login.jsf?erro=true" default-target-url="/index.jsf" />
 		<sec:session-management>
