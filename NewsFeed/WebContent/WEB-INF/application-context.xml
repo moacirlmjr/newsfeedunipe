@@ -3,6 +3,7 @@
 	xmlns:context="http://www.springframework.org/schema/context" 
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:sec="http://www.springframework.org/schema/security"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 	       http://www.springframework.org/schema/beans
@@ -10,13 +11,40 @@
 	       http://www.springframework.org/schema/tx
 	       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	       http://www.springframework.org/schema/context
-	       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	       http://www.springframework.org/schema/security
+	       http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 	<context:annotation-config />
 	
 	<context:component-scan base-package="br.com.unipe.newsFeed" />
 	
 	<tx:annotation-driven />
+	
+	<sec:http auto-config="true" use-expressions="true">
+		<sec:access-denied-handler error-page="/paginas/erro/semPermissao.jsf" />
+		<sec:intercept-url pattern="/index.jsf" access="hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/paginas/config/*"
+			access="hasRole('ROLE_ADMIN')" />
+		<sec:form-login login-page="/login.jsf"
+			authentication-failure-url="/login.jsf?erro=true" default-target-url="/index.jsf" />
+		<sec:session-management>
+			<sec:concurrency-control max-sessions="50"
+				error-if-maximum-exceeded="false" expired-url="/login.jsf?error=expired.url" />
+		</sec:session-management>
+	</sec:http>
+
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:password-encoder hash="sha-256" />
+			<sec:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT u.email, u.senha FROM Usuario u WHERE u.email=?"
+				authorities-by-username-query="SELECT u.email as username, CONCAT('ROLE_',ua.nome) as authority FROM Autorizacao ua, Usuario u WHERE u.email=? and u.autorizacao_id = ua.id" />
+			<!-- <user-service> <user name="avaty" password="avaty" authorities="ROLE_USER, 
+				ROLE_ADMIN" /> <user name="teste" password="teste" authorities="ROLE_USER" 
+				/> </user-service> -->
+		</sec:authentication-provider>
+	</sec:authentication-manager>
 
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
