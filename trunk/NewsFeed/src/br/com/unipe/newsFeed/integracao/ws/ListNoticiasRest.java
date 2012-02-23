@@ -27,12 +27,15 @@ public class ListNoticiasRest {
 	private NoticiaService service;
 
 	@POST
-	public String listByTamanho(@FormParam("tam") @DefaultValue("0") Integer tamanho) {
+	public String listByTamanho(@FormParam("tamanho") @DefaultValue("0") Integer tamanho) {
 		try {
 
 			List<Noticia> listNoticia = null;
-
-			listNoticia = this.service.listBySize(tamanho);
+			if(tamanho != 0){
+				listNoticia = this.service.listBySize(tamanho-1);
+			}else{
+				listNoticia = this.service.listBySize(tamanho);
+			}
 
 			return JSONUtil.montarJsonNoticiaList(listNoticia)
 					.toString();
