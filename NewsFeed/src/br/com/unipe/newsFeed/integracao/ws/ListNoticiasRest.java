@@ -31,10 +31,10 @@ public class ListNoticiasRest {
 		try {
 
 			List<Noticia> listNoticia = null;
-			if(tamanho != 0){
-				listNoticia = this.service.listBySize(tamanho-1);
-			}else{
+			if(tamanho == 0){
 				listNoticia = this.service.listBySize(tamanho);
+			}else{
+				listNoticia = this.service.listBySize(tamanho-1);
 			}
 
 			return JSONUtil.montarJsonNoticiaList(listNoticia)
