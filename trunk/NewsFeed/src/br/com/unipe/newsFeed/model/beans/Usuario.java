@@ -1,5 +1,6 @@
 package br.com.unipe.newsFeed.model.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -12,7 +13,7 @@ public class Usuario extends NewsFeedEntityMaster {
 	private String email;
 	private String senha;
 
-	@OneToOne(targetEntity=Autorizacao.class)
+	@OneToOne(targetEntity=Autorizacao.class, cascade=CascadeType.ALL)
 	private Autorizacao autorizacao;
 
 	public String getNome() {

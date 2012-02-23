@@ -5,24 +5,44 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>NEWSFEED</title>
+	<title>Unipê NewsFeed</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 </h:head>
 <body>
-	
-	<p:dialog header="Login" visible="true" closable="false"
-		draggable="false" resizable="false" width="420">
-		<center> <h:outputText value="Usuário ou senha incorretos!"
-			rendered="#{param.erro}" style="color: darkred" />
-	    </center>
-			<form action="j_spring_security_check" method="post">
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputLabel for="j_username" value="Email: *" />
-					<h:inputText id="j_username" required="true" />
-					<h:outputLabel for="j_password" value="Senha: * " />
-					<h:inputSecret id="j_password" required="true" />
-					<h:commandButton value="Login" />
-				</h:panelGrid>
-			</form>
-	</p:dialog>
+
+	<div id="wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#">Unipê NewsFeed</a>
+				</h1>
+			</div>
+		</div>
+		<div id="page">
+			<div id="content">
+				<div class="box">
+					<p>
+						<p:dialog header="Login" visible="true" closable="false"
+							draggable="false" resizable="false" width="420">
+							<center> <h:outputText
+								value="Usuário ou senha incorretos!" rendered="#{param.erro}"
+								style="color: darkred" /> </center>
+							<form action="j_spring_security_check" method="post">
+								<h:panelGrid columns="2" cellpadding="5">
+									<h:outputLabel for="j_username" value="Email: *" />
+									<h:inputText id="j_username" required="true" />
+									<h:outputLabel for="j_password" value="Senha: * " />
+									<h:inputSecret id="j_password" required="true" />
+									<h:commandButton value="Login" />
+								</h:panelGrid>
+							</form>
+						</p:dialog>
+					</p>
+				</div>
+
+				<br class="clearfix" />
+			</div>
+		</div>
+	</div>
 </body>
 </html>

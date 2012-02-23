@@ -40,4 +40,9 @@ public class NoticiaServiceImpl implements NoticiaService {
 		return noticiaDAO.getBeansByExample(bean);
 	}
 
+	@Override
+	public List<Noticia> listBySize(Integer tamanho) {
+		return noticiaDAO.listBySize(tamanho);
+	}
+
 }
