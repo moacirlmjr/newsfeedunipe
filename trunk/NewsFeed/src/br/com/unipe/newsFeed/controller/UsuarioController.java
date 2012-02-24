@@ -17,7 +17,7 @@ import br.com.unipe.newsFeed.model.beans.Usuario;
 import br.com.unipe.newsFeed.model.service.UsuarioService;
 
 @Named("usuarioController")
-@Scope("session")
+@Scope("request")
 public class UsuarioController implements Serializable {
 
 	private Usuario usuario;
