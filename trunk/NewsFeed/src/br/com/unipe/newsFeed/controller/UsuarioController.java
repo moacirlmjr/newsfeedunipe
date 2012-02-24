@@ -2,7 +2,8 @@ package br.com.unipe.newsFeed.controller;
 
 import java.io.Serializable;
 
-import javax.faces.model.DataModel;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.security.core.userdetails.User;
 import br.com.unipe.newsFeed.model.beans.Usuario;
 import br.com.unipe.newsFeed.model.service.UsuarioService;
 
-@Named
+@Named("usuarioController")
 @Scope("session")
 public class UsuarioController implements Serializable {
 
@@ -34,6 +35,22 @@ public class UsuarioController implements Serializable {
 						.getUsername());
 			}
 		}
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public UsuarioService getUsuarioService() {
+		return usuarioService;
+	}
+
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
 	}
 
 }
