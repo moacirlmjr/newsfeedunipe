@@ -5,6 +5,25 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition>
+	<div id="header">
+		<div id="logo">
+			<h1>
+				<a href="#">Unipê NewsFeed</a>
+			</h1>
+		</div>
+		
+		<ui:insert name="menu">
+			<ui:include src="menu.xhtml" />
+		</ui:insert>
+		
+		<div style="font-size: 14px; text-align: right; padding-top: 150px">
+			Olá, <strong> <h:outputText value=" #{usuarioController.usuario.email} " /> </strong>
 
+			<h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
+				<h:graphicImage value="/images/logout.png" alt="LogOut"/>
+			</h:outputLink>
+
+		</div>
+	</div>
 </ui:composition>
 </html>

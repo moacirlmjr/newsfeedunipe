@@ -6,33 +6,30 @@
 
 <h:head>
 	<title>NEWSFEED</title>
-	<link type="text/css" rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/css/style.css" />
+	<link type="text/css" rel="stylesheet"
+		href="#{facesContext.externalContext.requestContextPath}/css/style.css" />
 </h:head>
 
 
 <h:body>
-	<div id="conteudo">
+	<div id="wrapper">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
 
-		<center>
+		<div id="page">
+			<div id="content">
+				<div class="box">
+					<ui:insert name="content"></ui:insert>
+				</div>
 
-			<ui:insert name="header">
-				<ui:include src="header.xhtml" />
-			</ui:insert>
-
-
-			<div id="main">
-				<ui:insert name="menu">
-					<ui:include src="menu.xhtml" />
-				</ui:insert>
-
-				<ui:insert name="content"></ui:insert>
-				<br/>
-				<ui:insert name="footer">
-					<ui:include src="footer.xhtml" />
-				</ui:insert>
+				<br class="clearfix" />
 			</div>
-		</center>
+		</div>
 	</div>
 
+	<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
 </h:body>
 </html>
