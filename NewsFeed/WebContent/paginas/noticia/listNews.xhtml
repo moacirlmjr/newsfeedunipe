@@ -3,11 +3,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.prime.com.tr/ui">
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="../layout/template.xhtml">
 	<ui:define name="content">
-		
+		<p:dataTable id="tableNews" value="#{noticiaController.listaNoticias}" >
+			<f:facet name="header">
+				<h:outputText value="Notícias" />
+			</f:facet>
+		</p:dataTable>
 	</ui:define>
 </ui:composition>
 </html>
