@@ -7,10 +7,40 @@
 
 <ui:composition template="../layout/template.xhtml">
 	<ui:define name="content">
-		<p:dataTable id="tableNews" value="#{noticiaController.listaNoticias}" >
+		<h:form id="form">
+			<p:commandButton value="Nova Notícia" action="#{noticiaController.prepararCadastroNoticia}" ajax="false"/>
+		</h:form>
+		<p:dataTable id="tableNews" value="#{noticiaController.listNoticias}"
+			rows="10" paginator="true" 
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" var="noticia">
 			<f:facet name="header">
 				<h:outputText value="Notícias" />
 			</f:facet>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Titulo" />
+				</f:facet>
+
+				<h:outputText value="#{noticia.titulo}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Categoria" />
+				</f:facet>
+
+				<h:outputText value="#{noticia.categoria.nome}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Data" />
+				</f:facet>
+
+				<h:outputText value="#{noticia.date.time}" />
+			</p:column>
 		</p:dataTable>
 	</ui:define>
 </ui:composition>

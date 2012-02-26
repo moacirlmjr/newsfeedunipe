@@ -1,11 +1,15 @@
 package br.com.unipe.newsFeed.model.util;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Component;
 
 import br.com.unipe.newsFeed.model.beans.Autorizacao;
 import br.com.unipe.newsFeed.model.beans.Categoria;
+import br.com.unipe.newsFeed.model.beans.Usuario;
 
 @Component
 public class HibernateCarga {
@@ -52,6 +56,31 @@ public class HibernateCarga {
 		session.close();
 	}
 	
+	public void carregarAdministrador() throws Exception{
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		
+		Autorizacao autorizacao = new Autorizacao();
+		autorizacao.setNome("ADMIN");
+		
+		Example example = HibernateUtil.getExample(autorizacao);
+		List<Autorizacao> result = session.createCriteria(Autorizacao.class).add(example).list();
+		if(result.size() != 0){
+			autorizacao = result.get(0);
+		}
+		
+		Usuario usuario = new Usuario();
+		usuario.setNome("admin");
+		usuario.setEmail("admin");
+		usuario.setSenha(Utilidades.criarHashSenha("admin"));
+		
+		session.save(usuario);
+		
+		t.commit();
+		session.close();
+	}
+	
 	
 	public static void main(String[] args) {
 		HibernateCarga hc = new HibernateCarga();
@@ -59,6 +88,7 @@ public class HibernateCarga {
 		try {
 			hc.carregarCategorias();
 			hc.carregarAutorizacoes();
+			hc.carregarAdministrador();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

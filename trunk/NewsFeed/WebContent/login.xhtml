@@ -21,22 +21,22 @@
 		<div id="page">
 			<div id="content">
 				<div class="box">
-					<p>
-						<form action="j_spring_security_check" method="post">
+					<form id="form" action="j_spring_security_check" method="post">
+						<p>
 							<p:panel header="Login" style="width: 400px;">
 								<center> <h:outputText
 									value="Usuário ou senha incorretos!" rendered="#{param.erro}"
 									style="color: darkred" /> </center>
 								<h:panelGrid columns="2" cellpadding="5">
 									<h:outputLabel for="j_username" value="Email: *" />
-									<h:inputText id="j_username" required="true" />
+									<p:inputText id="j_username" required="true" />
 									<h:outputLabel for="j_password" value="Senha: * " />
-									<h:inputSecret id="j_password" required="true" />
+									<p:inputText id="j_password" required="true" type="password" />
 									<h:commandButton value="Login" />
 								</h:panelGrid>
 							</p:panel>
-						</form>
-					</p>
+						</p>
+					</form>
 				</div>
 
 				<br class="clearfix" />

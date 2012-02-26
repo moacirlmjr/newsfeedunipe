@@ -1,4 +1,4 @@
-package br.com.unipe.newsFeed.controller;
+package br.com.unipe.newsFeed.controller.beans;
 
 import java.io.Serializable;
 
@@ -13,12 +13,13 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
+import br.com.unipe.newsFeed.controller.beans.comum.NewsFeedController;
 import br.com.unipe.newsFeed.model.beans.Usuario;
 import br.com.unipe.newsFeed.model.service.UsuarioService;
 
 @Named("usuarioController")
 @Scope("request")
-public class UsuarioController implements Serializable {
+public class UsuarioController extends NewsFeedController {
 
 	private Usuario usuario;
 

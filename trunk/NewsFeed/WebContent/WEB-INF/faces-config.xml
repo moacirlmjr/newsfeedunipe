@@ -8,5 +8,17 @@
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
+	
+	<application>
+		<message-bundle>br.com.unipe.newsFeed.resources.Mensagens</message-bundle>
+		<locale-config>
+			<default-locale>pt_BR</default-locale>
+			<supported-locale>pt_BR</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>br.com.unipe.newsFeed.resources.Mensagens</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+	</application>
 
 </faces-config>
