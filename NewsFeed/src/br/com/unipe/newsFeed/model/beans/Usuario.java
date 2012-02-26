@@ -1,6 +1,7 @@
 package br.com.unipe.newsFeed.model.beans;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -10,6 +11,7 @@ import br.com.unipe.newsFeed.model.beans.comum.NewsFeedEntityMaster;
 public class Usuario extends NewsFeedEntityMaster {
 
 	private String nome;
+	@Column(unique=true)
 	private String email;
 	private String senha;
 

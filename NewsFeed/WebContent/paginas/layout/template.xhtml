@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	>
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>NEWSFEED</title>
@@ -20,6 +20,7 @@
 
 		<div id="page">
 			<div id="content">
+				<p:messages globalOnly="true" />
 				<div class="box">
 					<ui:insert name="content"></ui:insert>
 				</div>
