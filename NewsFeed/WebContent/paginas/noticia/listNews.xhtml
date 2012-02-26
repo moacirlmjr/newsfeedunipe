@@ -8,12 +8,13 @@
 <ui:composition template="../layout/template.xhtml">
 	<ui:define name="content">
 		<h:form id="form">
-			<p:commandButton value="Nova Notícia" action="#{noticiaController.prepararCadastroNoticia}" ajax="false"/>
+			<p:commandButton value="Nova Notícia"
+				action="#{noticiaController.prepararCadastroNoticia}" ajax="false" />
 		</h:form>
 		<p:dataTable id="tableNews" value="#{noticiaController.listNoticias}"
-			rows="10" paginator="true" 
+			rows="10" paginator="true"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="5,10,15" var="noticia">
+			rowsPerPageTemplate="5,10,15" var="noticia" >
 			<f:facet name="header">
 				<h:outputText value="Notícias" />
 			</f:facet>
