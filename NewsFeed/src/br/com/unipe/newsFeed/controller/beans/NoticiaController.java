@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
 import br.com.unipe.newsFeed.controller.beans.comum.NewsFeedController;
+import br.com.unipe.newsFeed.controller.dataModel.NoticiaDataModel;
 import br.com.unipe.newsFeed.model.beans.Categoria;
 import br.com.unipe.newsFeed.model.beans.Noticia;
 import br.com.unipe.newsFeed.model.beans.Usuario;
@@ -27,6 +28,8 @@ public class NoticiaController extends NewsFeedController {
 
 	private Noticia noticia;
 
+	private NoticiaDataModel noticiaDataModel;
+	
 	@Autowired
 	private NoticiaService noticiaService;
 
@@ -90,7 +93,7 @@ public class NoticiaController extends NewsFeedController {
 		registrarSucessoInclusao();
 		return "listNews";
 	}
-
+	
 	/**
 	 * @return the noticia
 	 */
@@ -105,5 +108,15 @@ public class NoticiaController extends NewsFeedController {
 	public void setNoticia(Noticia noticia) {
 		this.noticia = noticia;
 	}
+
+	public NoticiaDataModel getNoticiaDataModel() throws Exception {
+		return new NoticiaDataModel(noticiaService.list());
+	}
+
+	public void setNoticiaDataModel(NoticiaDataModel noticiaDataModel) {
+		this.noticiaDataModel = noticiaDataModel;
+	}
+	
+	
 
 }
