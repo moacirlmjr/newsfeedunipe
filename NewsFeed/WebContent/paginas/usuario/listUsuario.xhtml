@@ -49,56 +49,33 @@
 
 					<h:outputText value="#{noticia.date.time}" />
 				</p:column>
-
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Alterar" />
-					</f:facet>
-
-					<p:commandButton value="" icon="ui-icon-arrowrefresh-1-w"
-						actionListener="#{noticiaController.prepararAtualizarNoticia}"
-						action="#{noticiaController.carregarAtualizarNoticia}"
-						ajax="false">
-					</p:commandButton>
-				</p:column>
-
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Excluir" />
-					</f:facet>
-
-
-					<p:commandButton value="" icon="ui-icon-close"
-						action="#{noticiaController.excluirNoticia}" ajax="false" />
-				</p:column>
 			</p:dataTable>
 
-			<p:dialog id="dialog" header="Notícia" widgetVar="newsDialog"
-				modal="true" resizable="false" showEffect="explode"
-				hideEffect="explode">
+			<p:dialog id="dialog" header="Notícia" widgetVar="newsDialog" modal="true"
+				resizable="false" showEffect="explode" hideEffect="explode">
 
 				<h:panelGrid id="panelDialog" columns="1" cellpadding="4">
 
 					<h:panelGrid columns="2">
-						<h:outputText value="Título:" style="font-weight: bold;" />
+						<h:outputText value="Título:" style="font-weight: bold;"/>
 						<h:outputText id="titulo"
 							value="#{noticiaController.noticia.titulo}" />
 
-						<h:outputText value="Categoria:" style="font-weight: bold;" />
+						<h:outputText value="Categoria:" style="font-weight: bold;"/>
 						<h:outputText id="categoria"
 							value="#{noticiaController.noticia.categoria.nome}" />
 
-						<h:outputText value="Usuário:" style="font-weight: bold;" />
+						<h:outputText value="Usuário:" style="font-weight: bold;"/>
 						<h:outputText id="usuario"
 							value="#{noticiaController.noticia.user.nome}" />
 
-						<h:outputText value="Data:" style="font-weight: bold;" />
+						<h:outputText value="Data:" style="font-weight: bold;"/>
 						<h:outputText id="data"
 							value="#{noticiaController.noticia.date.time}" />
 
 					</h:panelGrid>
 
-					<h:outputText value="Mensagem:" style="font-weight: bold;" />
+					<h:outputText value="Mensagem:" style="font-weight: bold;"/>
 					<h:outputText value="#{noticiaController.noticia.mensagem}"
 						escape="false" />
 

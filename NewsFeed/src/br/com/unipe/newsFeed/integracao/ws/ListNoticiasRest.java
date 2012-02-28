@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.unipe.newsFeed.model.beans.Noticia;
+import br.com.unipe.newsFeed.model.service.CategoriaService;
 import br.com.unipe.newsFeed.model.service.NoticiaService;
 import br.com.unipe.newsFeed.model.util.JSONUtil;
 import br.com.unipe.newsFeed.model.util.NewsFeedLog;
@@ -25,6 +26,9 @@ public class ListNoticiasRest {
 
 	@Autowired
 	private NoticiaService service;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 
 	@POST
 	public String listByTamanho(@FormParam("tamanho") @DefaultValue("0") Integer tamanho) {
@@ -37,7 +41,7 @@ public class ListNoticiasRest {
 				listNoticia = this.service.listBySize(tamanho-1);
 			}
 
-			return JSONUtil.montarJsonNoticiaList(listNoticia)
+			return JSONUtil.montarJsonNoticiaListByCategoria(listNoticia,categoriaService.list())
 					.toString();
 
 		} catch (Exception e) {
@@ -55,7 +59,7 @@ public class ListNoticiasRest {
 
 			listNoticia = this.service.list();
 
-			return JSONUtil.montarJsonNoticiaList(listNoticia)
+			return JSONUtil.montarJsonNoticiaListByCategoria(listNoticia,categoriaService.list())
 					.toString();
 
 		} catch (Exception e) {

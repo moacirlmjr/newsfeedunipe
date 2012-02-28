@@ -9,14 +9,13 @@
 	<ui:define name="content">
 		<h:form id="form">
 			<p:panel header="Cadastro de Noticias">
-				<h:inputHidden value="#{noticiaController.noticia.id}" />
 				<h:panelGrid columns="3">
-					<h:outputText value="Título:" style="font-weight: bold;"/>
+					<h:outputText value="Título" />
 					<p:inputText id="titulo"
 						value="#{noticiaController.noticia.titulo}" />
 					<p:message for="titulo" />
 
-					<h:outputText value="Categoria:" style="font-weight: bold;"/>
+					<h:outputText value="Categoria" />
 					<p:selectOneMenu id="categoria"
 						value="#{noticiaController.noticia.categoria}" converter="#{categoriaConverter}">
 						<f:selectItems value="#{noticiaController.categoriaSelectItens}" />
@@ -25,10 +24,10 @@
 
 				</h:panelGrid>
 				
-				<h:outputText value="Mensagem:" style="font-weight: bold;"/> <br />
+				<h:outputText value="Mensagem" /> <br />
 				<p:editor value="#{noticiaController.noticia.mensagem}" /><br />
 
-				<p:commandButton id="cadastrarNoticia" value="#{noticiaController.nomeBotao}" ajax="false"
+				<p:commandButton id="cadastrarNoticia" value="Cadastrar" ajax="false"
 					action="#{noticiaController.cadastrarNoticia}" />
 			</p:panel>
 		</h:form>

@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
+import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
@@ -28,14 +29,16 @@ public class NoticiaController extends NewsFeedController {
 
 	private Noticia noticia;
 
+	private String nomeBotao;
+
 	private NoticiaDataModel noticiaDataModel;
-	
+
 	@Autowired
 	private NoticiaService noticiaService;
 
 	@Autowired
 	private CategoriaService categoriaService;
-	
+
 	@Autowired
 	private SpringUtil springUtil;
 
@@ -62,7 +65,7 @@ public class NoticiaController extends NewsFeedController {
 			List<Categoria> categorias = categoriaService.list();
 
 			for (Categoria c : categorias) {
-				selectItens.add(new SelectItem(c,c.getNome()));
+				selectItens.add(new SelectItem(c, c.getNome()));
 			}
 
 			return selectItens;
@@ -76,24 +79,62 @@ public class NoticiaController extends NewsFeedController {
 	}
 
 	public String prepararCadastroNoticia() {
+		noticia = new Noticia();
+		nomeBotao = "Cadastrar";
 		return "cadastroNoticia";
+	}
+
+	public void prepararAtualizarNoticia(ActionEvent actionEvent) {
+		nomeBotao = "Atualizar";
+		this.noticia = (Noticia) (noticiaDataModel.getRowData());
+	}
+
+	public String carregarAtualizarNoticia() {
+		return "cadastroNoticia";
+	}
+
+	public String excluirNoticia() {
+		try {
+			this.noticia = (Noticia) (noticiaDataModel.getRowData());
+			noticiaService.remove(noticia);
+
+			registrarSucessoExclusao();
+		} catch (Exception e) {
+			FacesUtil.registrarErro("erro.exclusao");
+			NewsFeedLog.error(e);
+		}
+		
+		return "listNews";
 	}
 
 	public String cadastrarNoticia() {
 		try {
-			Usuario userLogado = springUtil.getSessionUser();
-			noticia.setUser(userLogado);
-			noticia.setDate(Calendar.getInstance());
-			noticiaService.createOrUpdate(noticia);
+
+			if (noticia.getId() != 0) {
+
+				Noticia noticiaAux = noticiaService.findById(noticia.getId());
+				noticiaAux.setTitulo(noticia.getTitulo());
+				noticiaAux.setCategoria(noticia.getCategoria());
+				noticiaAux.setMensagem(noticia.getMensagem());
+				noticiaService.createOrUpdate(noticiaAux);
+			} else {
+				Usuario userLogado = springUtil.getSessionUser();
+				noticia.setUser(userLogado);
+				noticia.setDate(Calendar.getInstance());
+				noticiaService.createOrUpdate(noticia);
+
+			}
+
+			registrarSucessoInclusao();
+			
 		} catch (Exception e) {
 			FacesUtil.registrarErro("erro.inclusao");
 			NewsFeedLog.error(e);
 		}
 
-		registrarSucessoInclusao();
 		return "listNews";
 	}
-	
+
 	/**
 	 * @return the noticia
 	 */
@@ -110,13 +151,20 @@ public class NoticiaController extends NewsFeedController {
 	}
 
 	public NoticiaDataModel getNoticiaDataModel() throws Exception {
-		return new NoticiaDataModel(noticiaService.list());
+		noticiaDataModel = new NoticiaDataModel(noticiaService.list());
+		return noticiaDataModel;
 	}
 
 	public void setNoticiaDataModel(NoticiaDataModel noticiaDataModel) {
 		this.noticiaDataModel = noticiaDataModel;
 	}
-	
-	
+
+	public String getNomeBotao() {
+		return nomeBotao;
+	}
+
+	public void setNomeBotao(String nomeBotao) {
+		this.nomeBotao = nomeBotao;
+	}
 
 }
