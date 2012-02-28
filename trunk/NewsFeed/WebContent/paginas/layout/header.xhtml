@@ -16,7 +16,7 @@
 			<ui:include src="menu.xhtml" />
 		</ui:insert>
 		
-		<div style="font-size: 14px; text-align: right; padding-top: 150px">
+		<div id="divUser">
 			Olá, <strong> <h:outputText value=" #{usuarioController.usuario.email} " /> </strong>
 
 			<h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">

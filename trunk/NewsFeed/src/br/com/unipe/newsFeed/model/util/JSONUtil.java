@@ -59,7 +59,7 @@ public class JSONUtil {
 			jsonCategoriasAux = new JSONObject();
 			jsonArrayNoticias = new JSONArray();
 			jsonCategoriasAux.put("id", c.getId());
-			jsonCategoriasAux.put("nome", c.getNome());
+			jsonCategoriasAux.put("categoria", c.getNome());
 			
 			for(Noticia n : listNoticia){
 				if(n.getCategoria().getNome().equalsIgnoreCase(c.getNome())){
