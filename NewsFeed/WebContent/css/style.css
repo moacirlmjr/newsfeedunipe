@@ -240,3 +240,10 @@ ul h4 {
 	padding: 75px 0 0 0;
 	width: 980px;
 }
+
+#divUser{
+	font-size: 14px; 
+	text-align: right; 
+	padding-top: 150px;
+	background: url(../images/bg_user.png) no-repeat right ;
+}
