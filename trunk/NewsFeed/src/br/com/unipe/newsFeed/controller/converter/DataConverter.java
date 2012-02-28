@@ -10,7 +10,7 @@ public class DataConverter extends DateTimeConverter{
 
 	public DataConverter() {
 		super();
-		this.setPattern("dd/MM/yyyy");
+		this.setPattern("dd/MM/yyyy HH:mm:ss");
 	}
 	
 }

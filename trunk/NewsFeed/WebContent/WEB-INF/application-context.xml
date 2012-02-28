@@ -55,7 +55,7 @@
 			<property name="url" value="jdbc:mysql://localhost:3306/newsfeed" />
 			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 			<property name="username" value="root" />
-			<property name="password" value="root" />
+			<property name="password" value="teste" />
 	</bean>
 	
 	<bean id="sessionFactory"

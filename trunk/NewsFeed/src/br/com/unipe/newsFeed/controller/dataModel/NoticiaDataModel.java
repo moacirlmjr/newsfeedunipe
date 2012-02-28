@@ -35,6 +35,6 @@ public class NoticiaDataModel extends ListDataModel<Noticia> implements
 
 	@Override
 	public Object getRowKey(Noticia noticia) {
-		return noticia;
+		return noticia.getTitulo();
 	}
 }

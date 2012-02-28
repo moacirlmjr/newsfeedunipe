@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../layout/template.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<p:panel header="Cadastro de Categorias">
+				<h:panelGrid columns="3">
+					<h:outputText value="Nome:" style="font-weight: bold;"/>
+					<p:inputText id="nome"
+						value="#{categoriaController.categoria.nome}" />
+					<p:message for="nome" />
+
+				</h:panelGrid>
+				
+				<p:commandButton id="cadastrarCategoria" value="Cadastrar" ajax="false"
+					action="#{categoriaController.cadastrarCategoria}" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -28,11 +28,35 @@ public class HibernateCarga {
 		session.save(categoria);
 		
 		categoria = new Categoria();
-		categoria.setNome("Urgente");
+		categoria.setNome("Geek");
 		session.save(categoria);
 		
 		categoria = new Categoria();
-		categoria.setNome("Geek");
+		categoria.setNome("ITJOB");
+		session.save(categoria);
+		
+		categoria = new Categoria();
+		categoria.setNome("Pós-Graduação");
+		session.save(categoria);
+		
+		categoria = new Categoria();
+		categoria.setNome("Mercado");
+		session.save(categoria);
+		
+		categoria = new Categoria();
+		categoria.setNome("Mobilidade");
+		session.save(categoria);
+		
+		categoria = new Categoria();
+		categoria.setNome("DicasTech");
+		session.save(categoria);
+		
+		categoria = new Categoria();
+		categoria.setNome("Mural Coordenação");
+		session.save(categoria);
+		
+		categoria = new Categoria();
+		categoria.setNome("Eventos");
 		session.save(categoria);
 		
 		t.commit();
@@ -87,8 +111,8 @@ public class HibernateCarga {
 		
 		try {
 			hc.carregarCategorias();
-			hc.carregarAutorizacoes();
-			hc.carregarAdministrador();
+//			hc.carregarAutorizacoes();
+//			hc.carregarAdministrador();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
