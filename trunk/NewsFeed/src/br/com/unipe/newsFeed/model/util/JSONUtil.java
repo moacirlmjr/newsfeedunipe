@@ -67,6 +67,7 @@ public class JSONUtil {
 					jsonNoticias.put("id", n.getId());
 					jsonNoticias.put("titulo", n.getTitulo());
 					jsonNoticias.put("data",n.getDate() == null? " " : formater.format(n.getDate().getTime()));
+					jsonNoticias.put("datalong",n.getDate() == null? " " : n.getDate().getTimeInMillis());
 					jsonNoticias.put("html", n.getMensagem());
 					jsonArrayNoticias.put(jsonNoticias);
 				}

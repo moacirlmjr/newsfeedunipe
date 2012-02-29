@@ -131,6 +131,13 @@ ul h4 {
 	text-shadow: 0 2px 2px #0E3E68;
 }
 
+#logo_img{
+	margin-top: -40px;
+	margin-left: -39px;
+	height: 120px;
+	
+}
+
 #menu {
 	height: 62px;
 	left: 200px;
@@ -244,6 +251,11 @@ ul h4 {
 #divUser{
 	font-size: 14px; 
 	text-align: right; 
-	padding-top: 150px;
-	background: url(../images/bg_user.png) no-repeat right ;
+	padding-top: 170px;
+	color: #000;
+}
+
+#divUser #bguser{
+	margin-right: -105px;
+	margin-bottom: -10px;
 }
