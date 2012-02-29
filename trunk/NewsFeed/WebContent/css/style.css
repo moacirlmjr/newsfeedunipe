@@ -132,10 +132,10 @@ ul h4 {
 }
 
 #logo_img{
-	margin-top: -40px;
-	margin-left: -39px;
+	margin-top: -20px;
+	margin-left: -30px;
 	height: 120px;
-	
+	border: 0px;	
 }
 
 #menu {
@@ -258,4 +258,5 @@ ul h4 {
 #divUser #bguser{
 	margin-right: -105px;
 	margin-bottom: -10px;
+	width: auto;
 }
