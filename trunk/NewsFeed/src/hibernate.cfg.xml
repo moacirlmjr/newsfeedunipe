@@ -6,9 +6,13 @@
 	<session-factory name="easy">
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/newsfeed?autoReconnect=true</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">teste</property>
+<!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/newsfeed?autoReconnect=true</property> -->
+<!-- 		<property name="hibernate.connection.username">root</property> -->
+<!-- 		<property name="hibernate.connection.password">teste</property> -->
+
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/feeds?autoReconnect=true</property>
+		<property name="hibernate.connection.username">admfeeds</property>
+		<property name="hibernate.connection.password">unipe=200</property>
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.show_sql">false</property>

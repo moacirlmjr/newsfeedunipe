@@ -111,8 +111,8 @@ public class HibernateCarga {
 		
 		try {
 			hc.carregarCategorias();
-//			hc.carregarAutorizacoes();
-//			hc.carregarAdministrador();
+			hc.carregarAutorizacoes();
+			hc.carregarAdministrador();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
