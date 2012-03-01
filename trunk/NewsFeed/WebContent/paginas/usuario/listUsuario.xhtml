@@ -8,79 +8,59 @@
 <ui:composition template="../layout/template.xhtml">
 	<ui:define name="content">
 		<h:form id="form">
-			<p:commandButton value="Nova Notícia"
-				action="#{noticiaController.prepararCadastroNoticia}" ajax="false" />
+			<p:commandButton value="Novo Usuário"
+				action="#{usuarioController.prepararCadastroUsuario}" ajax="false" />
 
 			<p:dataTable id="tableNews"
-				value="#{noticiaController.noticiaDataModel}" rows="10"
+				value="#{usuarioController.usuarioDataModel}" rows="10"
 				paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" var="noticia"
-				rowKey="#{noticia.titulo}" selection="#{noticiaController.noticia}"
-				selectionMode="single">
-
-				<p:ajax event="rowSelect" update=":form:panelDialog"
-					oncomplete="newsDialog.show()" />
+				rowsPerPageTemplate="5,10,15" var="usuario">
 
 				<f:facet name="header">
-					<h:outputText value="Notícias" />
+					<h:outputText value="Usuários" />
 				</f:facet>
 
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Titulo" />
+						<h:outputText value="Nome" />
 					</f:facet>
 
-					<h:outputText value="#{noticia.titulo}" />
+					<h:outputText value="#{usuario.nome}" />
 				</p:column>
 
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Categoria" />
+						<h:outputText value="Email" />
 					</f:facet>
 
-					<h:outputText value="#{noticia.categoria.nome}" />
+					<h:outputText value="#{usuario.email}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Alterar" />
+					</f:facet>
+
+					<p:commandButton value="" icon="ui-icon-arrowrefresh-1-w"
+						actionListener="#{usuarioController.prepararAtualizarUsuario}"
+						action="#{usuarioController.carregarAtualizarUsuario}"
+						ajax="false">
+					</p:commandButton>
 				</p:column>
 
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Data" />
+						<h:outputText value="Excluir" />
 					</f:facet>
 
-					<h:outputText value="#{noticia.date.time}" />
+
+					<p:commandButton value="" icon="ui-icon-close"
+						action="#{usuarioController.excluirUsuario}" ajax="false" />
 				</p:column>
+
 			</p:dataTable>
 
-			<p:dialog id="dialog" header="Notícia" widgetVar="newsDialog" modal="true"
-				resizable="false" showEffect="explode" hideEffect="explode">
-
-				<h:panelGrid id="panelDialog" columns="1" cellpadding="4">
-
-					<h:panelGrid columns="2">
-						<h:outputText value="Título:" style="font-weight: bold;"/>
-						<h:outputText id="titulo"
-							value="#{noticiaController.noticia.titulo}" />
-
-						<h:outputText value="Categoria:" style="font-weight: bold;"/>
-						<h:outputText id="categoria"
-							value="#{noticiaController.noticia.categoria.nome}" />
-
-						<h:outputText value="Usuário:" style="font-weight: bold;"/>
-						<h:outputText id="usuario"
-							value="#{noticiaController.noticia.user.nome}" />
-
-						<h:outputText value="Data:" style="font-weight: bold;"/>
-						<h:outputText id="data"
-							value="#{noticiaController.noticia.date.time}" />
-
-					</h:panelGrid>
-
-					<h:outputText value="Mensagem:" style="font-weight: bold;"/>
-					<h:outputText value="#{noticiaController.noticia.mensagem}"
-						escape="false" />
-
-				</h:panelGrid>
-			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import br.com.unipe.newsFeed.model.beans.comum.NewsFeedEntityMaster;
 
 /**
@@ -20,6 +22,7 @@ import br.com.unipe.newsFeed.model.beans.comum.NewsFeedEntityMaster;
 @Entity
 public class Noticia extends NewsFeedEntityMaster {
 
+	@NotEmpty(message = "{campo.nulo}")
 	private String titulo;
 	private String mensagem;
 	

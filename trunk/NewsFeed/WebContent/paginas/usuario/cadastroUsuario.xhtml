@@ -8,27 +8,31 @@
 <ui:composition template="../layout/template.xhtml">
 	<ui:define name="content">
 		<h:form id="form">
-			<p:panel header="Cadastro de Noticias">
+			<p:panel header="Cadastro de Usuários">
+				<h:inputHidden value="#{usuarioController.usuario.id}" />
 				<h:panelGrid columns="3">
-					<h:outputText value="Título" />
-					<p:inputText id="titulo"
-						value="#{noticiaController.noticia.titulo}" />
-					<p:message for="titulo" />
+					<h:outputText value="Nome: *" />
+					<p:inputText id="nome" value="#{usuarioController.usuario.nome}" />
+					<p:message for="nome" />
 
-					<h:outputText value="Categoria" />
-					<p:selectOneMenu id="categoria"
-						value="#{noticiaController.noticia.categoria}" converter="#{categoriaConverter}">
-						<f:selectItems value="#{noticiaController.categoriaSelectItens}" />
-					</p:selectOneMenu>
-					<p:message for="categoria" />
+					<h:outputText value="Email: *" />
+					<p:inputText id="email" value="#{usuarioController.usuario.email}"
+						disabled="#{usuarioController.disabledAtualizarCadastrar}" />
+					<p:message for="email" />
+
+					<h:outputText value="Senha: *" />
+					<p:password id="senha" value="#{usuarioController.usuario.senha}"
+						rendered="#{usuarioController.renderedAtualizarCadastrar}" />
+					<p:commandButton id="alterarSenha" value="Alterar Senha"
+						ajax="false" action="#{usuarioController.alterarSenha}"
+						rendered="#{usuarioController.disabledAtualizarCadastrar}" />
+					<p:message for="senha" />
+
 
 				</h:panelGrid>
-				
-				<h:outputText value="Mensagem" /> <br />
-				<p:editor value="#{noticiaController.noticia.mensagem}" /><br />
 
-				<p:commandButton id="cadastrarNoticia" value="Cadastrar" ajax="false"
-					action="#{noticiaController.cadastrarNoticia}" />
+				<p:commandButton id="cadastrarUsuario" value="#{usuarioController.nomeBotao}"
+					ajax="false" action="#{usuarioController.cadastrarUsuario}" />
 			</p:panel>
 		</h:form>
 	</ui:define>
