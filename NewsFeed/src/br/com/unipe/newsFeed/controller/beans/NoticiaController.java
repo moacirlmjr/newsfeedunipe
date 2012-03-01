@@ -8,6 +8,7 @@ import java.util.List;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -27,6 +28,7 @@ import br.com.unipe.newsFeed.model.util.SpringUtil;
 @Scope("request")
 public class NoticiaController extends NewsFeedController {
 
+	@Valid
 	private Noticia noticia;
 
 	private String nomeBotao;

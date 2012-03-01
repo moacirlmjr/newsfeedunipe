@@ -3,6 +3,7 @@ package br.com.unipe.newsFeed.controller.beans;
 import java.util.Collection;
 
 import javax.inject.Named;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,6 +18,7 @@ import br.com.unipe.newsFeed.model.util.NewsFeedLog;
 @Scope("request")
 public class CategoriaController extends NewsFeedController {
 
+	@Valid
 	private Categoria categoria;
 
 	@Autowired

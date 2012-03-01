@@ -149,7 +149,7 @@ ul h4 {
 #menu a {
 		text-decoration: none;
 	color: #FFFFFF;
-	font-size: 1.25em;
+	font-size: 1em;
 }
 
 #menu ul {
@@ -204,43 +204,6 @@ ul h4 {
 	border-top: 0;
 }
 
-#search input.form-submit {
-	background: #B87A23;
-	padding: 5px;
-	color: #FFFFFF;
-	border: 0;
-	margin-left: 1em;
-}
-
-#search input.form-text {
-	padding: 10px;
-	border: dotted 1px #569DBF;
-}
-
-#sidebar {
-	background: #EAEEF2 url(../images/img05.jpg) top left repeat-x;
-	width: 196px;
-	margin: 0 0 0 700px;
-	padding: 40px;
-	border-radius: 10px;
-	border: solid 2px #FFFFFF;
-	text-shadow: 0 1px 0 #FFFFFF;
-}
-
-#sidebar ul {
-	list-style: none;
-}
-
-#sidebar ul li {
-	padding: 15px 0 15px 0;
-	border-top: dotted 1px #C5CDD8;
-}
-
-#sidebar ul li.first {
-	border-top: 0;
-	padding-top: 0;
-}
-
 #wrapper {
 	position: relative;
 	margin: 0 auto 0 auto;
@@ -250,13 +213,10 @@ ul h4 {
 
 #divUser{
 	font-size: 14px; 
-	text-align: right; 
-	padding-top: 170px;
+	margin-top: 170px;
+	margin-right: -40px;
 	color: #000;
-}
-
-#divUser #bguser{
-	margin-right: -105px;
-	margin-bottom: -10px;
-	width: auto;
+	background: url(../images/bg_user.png) repeat-x ;
+	height: 50px;
+	float: right;
 }
