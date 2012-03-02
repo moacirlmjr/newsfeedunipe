@@ -105,6 +105,13 @@ public class HibernateCarga {
 		session.close();
 	}
 	
+	public void carregarNoticias(){
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		HibernateCarga hc = new HibernateCarga();
