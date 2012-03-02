@@ -58,9 +58,17 @@
 <!-- 			<property name="password" value="teste" /> -->
 <!-- 	</bean> -->
 
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->
+<!-- 		lazy-init="true"> -->
+<!-- 			<property name="url" value="jdbc:mysql://localhost:3306/feeds" /> -->
+<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!-- 			<property name="username" value="admfeeds" /> -->
+<!-- 			<property name="password" value="unipe=200" /> -->
+<!-- 	</bean> -->
+
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		lazy-init="true">
-			<property name="url" value="jdbc:mysql://localhost:3306/feeds" />
+			<property name="url" value="jdbc:mysql://177.43.175.221:8031/feeds" />
 			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 			<property name="username" value="admfeeds" />
 			<property name="password" value="unipe=200" />

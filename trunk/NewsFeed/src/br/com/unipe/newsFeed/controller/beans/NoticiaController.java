@@ -126,7 +126,7 @@ public class NoticiaController extends NewsFeedController {
 				noticiaService.createOrUpdate(noticia);
 
 			}
-
+			noticia = new Noticia();
 			registrarSucessoInclusao();
 			
 		} catch (Exception e) {
