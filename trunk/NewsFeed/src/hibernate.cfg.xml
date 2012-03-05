@@ -10,13 +10,13 @@
 <!-- 		<property name="hibernate.connection.username">root</property> -->
 <!-- 		<property name="hibernate.connection.password">teste</property> -->
 
-<!-- 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/feeds?autoReconnect=true</property> -->
-<!-- 		<property name="hibernate.connection.username">admfeeds</property> -->
-<!-- 		<property name="hibernate.connection.password">unipe=200</property> -->
-
-		<property name="hibernate.connection.url">jdbc:mysql://177.43.175.221:8031/feeds?autoReconnect=true</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/feeds?autoReconnect=true</property>
 		<property name="hibernate.connection.username">admfeeds</property>
 		<property name="hibernate.connection.password">unipe=200</property>
+
+<!-- 		<property name="hibernate.connection.url">jdbc:mysql://177.43.175.221:8301/feeds?autoReconnect=true</property> -->
+<!-- 		<property name="hibernate.connection.username">admfeeds</property> -->
+<!-- 		<property name="hibernate.connection.password">unipe=200</property> -->
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.show_sql">false</property>

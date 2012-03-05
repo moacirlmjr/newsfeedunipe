@@ -80,4 +80,28 @@ public class JSONUtil {
 		return jsonArrayCategorias;
 	}
 	
+	public static JSONArray montarJsonQteNoticiaByCategoria(List<Noticia> listNoticia, List<Categoria> listCategoria) throws JSONException {
+		JSONObject jsonCategoriasAux = new JSONObject();
+		JSONArray jsonArrayCategorias = new JSONArray();
+		
+		int countNews = 0;
+		for(Categoria c : listCategoria){
+			jsonCategoriasAux = new JSONObject();
+			jsonCategoriasAux.put("id", c.getId());
+			jsonCategoriasAux.put("categoria", c.getNome());
+			countNews = 0;
+			
+			for(Noticia n : listNoticia){
+				if(n.getCategoria().getNome().equalsIgnoreCase(c.getNome())){
+					countNews++;
+				}
+			}
+			jsonCategoriasAux.put("qtd", countNews);
+			jsonArrayCategorias.put(jsonCategoriasAux);
+		}
+		
+		
+		return jsonArrayCategorias;
+	}
+	
 }

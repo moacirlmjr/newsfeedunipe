@@ -1,10 +1,13 @@
 package br.com.unipe.newsFeed.model.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,9 +57,19 @@ public class NoticiaDAOImpl implements NoticiaDAO {
 	}
 
 	@Override
-	public List<Noticia> listBySize(Integer tamanho) {
+	public List<Noticia> listBySize(Integer tamanho) throws Exception{
 		return sessionFactory.getCurrentSession()
 				.createCriteria(Noticia.class).addOrder(Order.desc("date")).setFirstResult(tamanho).setMaxResults(10).list();
+	}
+	
+	@Override
+	public List<Noticia> listNewsDay() throws Exception{
+		return sessionFactory.getCurrentSession().createQuery("from Noticia where DATEDIFF(now(), date) < 1 order by date desc").list();
+	}
+	
+	@Override
+	public List<Noticia> listBySize(Integer tamanho, String categoria) throws Exception{
+		return sessionFactory.getCurrentSession().createQuery("from Noticia n where n.categoria.nome = '"+ categoria +"' order by date desc").setFirstResult(tamanho).setMaxResults(10).list();
 	}
 
 }

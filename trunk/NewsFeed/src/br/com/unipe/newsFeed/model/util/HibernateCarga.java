@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.unipe.newsFeed.model.beans.Autorizacao;
 import br.com.unipe.newsFeed.model.beans.Categoria;
+import br.com.unipe.newsFeed.model.beans.Noticia;
 import br.com.unipe.newsFeed.model.beans.Usuario;
 
 @Component
@@ -36,7 +37,7 @@ public class HibernateCarga {
 		session.save(categoria);
 		
 		categoria = new Categoria();
-		categoria.setNome("Pós-Graduação");
+		categoria.setNome("Pos-Graduacao");
 		session.save(categoria);
 		
 		categoria = new Categoria();
@@ -52,7 +53,7 @@ public class HibernateCarga {
 		session.save(categoria);
 		
 		categoria = new Categoria();
-		categoria.setNome("Mural Coordenação");
+		categoria.setNome("Mural Coordenacao");
 		session.save(categoria);
 		
 		categoria = new Categoria();
@@ -98,6 +99,7 @@ public class HibernateCarga {
 		usuario.setNome("admin");
 		usuario.setEmail("admin");
 		usuario.setSenha(Utilidades.criarHashSenha("admin"));
+		usuario.setAutorizacao(autorizacao);
 		
 		session.save(usuario);
 		
@@ -105,10 +107,21 @@ public class HibernateCarga {
 		session.close();
 	}
 	
-	public void carregarNoticias(){
+	public void carregarNoticias() throws Exception{
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
+		
+		Categoria categoria = new Categoria();
+		categoria.setNome("Geek");
+		
+		Example example = HibernateUtil.getExample(categoria);
+		List<Categoria> result = session.createCriteria(Categoria.class).add(example).list();
+		if(result.size() != 0){
+			categoria = result.get(0);
+		}
+		
+		Noticia noticia = new Noticia();
 		
 	}
 	

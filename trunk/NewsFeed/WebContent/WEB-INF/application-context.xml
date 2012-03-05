@@ -50,13 +50,13 @@
 	</sec:authentication-manager>
 
 
-<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->
-<!-- 		lazy-init="true"> -->
-<!-- 			<property name="url" value="jdbc:mysql://localhost:3306/newsfeed" /> -->
-<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!-- 			<property name="username" value="root" /> -->
-<!-- 			<property name="password" value="teste" /> -->
-<!-- 	</bean> -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		lazy-init="true">
+			<property name="url" value="jdbc:mysql://localhost:3306/newsfeed" />
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<property name="username" value="root" />
+			<property name="password" value="teste" />
+	</bean>
 
 <!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->
 <!-- 		lazy-init="true"> -->
@@ -66,13 +66,13 @@
 <!-- 			<property name="password" value="unipe=200" /> -->
 <!-- 	</bean> -->
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		lazy-init="true">
-			<property name="url" value="jdbc:mysql://177.43.175.221:8031/feeds" />
-			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-			<property name="username" value="admfeeds" />
-			<property name="password" value="unipe=200" />
-	</bean>
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->
+<!-- 		lazy-init="true"> -->
+<!-- 			<property name="url" value="jdbc:mysql://177.43.175.221:8301/feeds" /> -->
+<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!-- 			<property name="username" value="admfeeds" /> -->
+<!-- 			<property name="password" value="unipe=200" /> -->
+<!-- 	</bean> -->
 	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
