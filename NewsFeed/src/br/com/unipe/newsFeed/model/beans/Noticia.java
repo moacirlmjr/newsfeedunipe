@@ -5,6 +5,7 @@ package br.com.unipe.newsFeed.model.beans;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -24,6 +25,8 @@ public class Noticia extends NewsFeedEntityMaster {
 
 	@NotEmpty(message = "{campo.nulo}")
 	private String titulo;
+	
+	@Column(columnDefinition="TEXT")
 	private String mensagem;
 	
 	@Temporal(TemporalType.TIMESTAMP)

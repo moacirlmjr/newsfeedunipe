@@ -1,9 +1,12 @@
 package br.com.unipe.newsFeed.model.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Named;
 
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.unipe.newsFeed.model.beans.Noticia;
@@ -41,8 +44,20 @@ public class NoticiaServiceImpl implements NoticiaService {
 	}
 
 	@Override
-	public List<Noticia> listBySize(Integer tamanho) {
+	public List<Noticia> listBySize(Integer tamanho) throws Exception{
 		return noticiaDAO.listBySize(tamanho);
 	}
+	
+	@Override
+	public List<Noticia> listNewsDay() throws Exception{
+		return noticiaDAO.listNewsDay();
+	}
+
+	@Override
+	public List<Noticia> listBySize(Integer tamanho, String categoria)
+			throws Exception {
+		return noticiaDAO.listBySize(tamanho, categoria);
+	}
+	
 
 }

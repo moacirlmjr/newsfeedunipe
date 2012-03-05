@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.unipe.newsFeed.model.beans.Categoria;
 import br.com.unipe.newsFeed.model.beans.Noticia;
 import br.com.unipe.newsFeed.model.service.CategoriaService;
 import br.com.unipe.newsFeed.model.service.NoticiaService;
@@ -21,56 +20,46 @@ import br.com.unipe.newsFeed.model.util.JSONUtil;
 import br.com.unipe.newsFeed.model.util.NewsFeedLog;
 
 @Component
-@Path("/noticiaslist")
+@Path("/qtenoticiaslist")
 @Produces(MediaType.TEXT_PLAIN)
-public class ListNoticiasRest {
+public class ListCategoriasRest {
 
 	@Autowired
 	private NoticiaService service;
-	
+
 	@Autowired
 	private CategoriaService categoriaService;
 
 	@POST
-	public String listByTamanho(@FormParam("tamanho") @DefaultValue("0") Integer tamanho, @FormParam("categoria") String categoria) {
+	public String listByTamanho() {
 		try {
 
-			List<Noticia> listNoticia = null;
-			if(tamanho == 0){
-				listNoticia = this.service.listBySize(tamanho, categoria);
-			}else{
-				listNoticia = this.service.listBySize(tamanho-1, categoria);
-			}
-			
-			Categoria c = new Categoria();
-			c.setNome(categoria);
+			List<Noticia> listNoticia = this.service.listNewsDay();
 
-			return JSONUtil.montarJsonNoticiaListByCategoria(listNoticia,categoriaService.listByExample(c))
-					.toString();
+			return JSONUtil.montarJsonQteNoticiaByCategoria(listNoticia,
+					categoriaService.list()).toString();
 
 		} catch (Exception e) {
 			NewsFeedLog.error(e);
 		}
 		return "erro";
-		
+
 	}
-	
+
 	@GET
 	public String listAll() {
 		try {
 
-			List<Noticia> listNoticia = null;
+			List<Noticia> listNoticia = this.service.listNewsDay();
 
-			listNoticia = this.service.list();
-
-			return JSONUtil.montarJsonNoticiaListByCategoria(listNoticia,categoriaService.list())
-					.toString();
+			return JSONUtil.montarJsonQteNoticiaByCategoria(listNoticia,
+					categoriaService.list()).toString();
 
 		} catch (Exception e) {
 			NewsFeedLog.error(e);
 		}
 		return "erro";
-		
+
 	}
 
 }
